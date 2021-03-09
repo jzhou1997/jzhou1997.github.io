@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Linux下搭建hugo博客 - My New Hugo Site</title>
+  <link rel='canonical' href='https://jzhou1997.github.io/post/blog/' />
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <meta name='description' content='' />
+  <meta name='theme-color' content='black' />
+  
+
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+
+
+
+
+
+<link rel="stylesheet" href="https://jzhou1997.github.io/sass/style.min.8a1658d134a4b54730b66789206b2cf14c1b006a6de3f3fde6302f925b6e01f5.css" integrity="sha256-ihZY0TSktUcwtmeJIGss8UwbAGpt4/P95jAvkltuAfU=" media="screen">
+<link rel="stylesheet" href="https://jzhou1997.github.io/syntax.min.css" integrity="" media="screen">
+
+  <meta property="og:title" content="Linux下搭建hugo博客" />
+<meta property="og:description" content="Linux下搭建hugo博客 0.Hugo简介 ​	Hugo是由Go语言实现的静态网站生成器。简单、易用、高效、易扩展、快速部署。
+​	本博客主要参考了B站UP主CodeSheep的视频：https://www.bilibili.com/video/BV1q4411i7gL
+1.安装hugo ​	使用命令sudo apt-get install直接下载安装hugo，或者下载二进制.deb安装程序。 ​	下载后使用命令sudo dpkg -i hugo_0.80.0_Linux-64bit.deb 完成安装 ​	安装后查看hugo版本进行验证：
+jzhou@jzhou-virtual-machine:~/桌面$ hugo version Hugo Static Site Generator v0.80.0-792EF0F4 linux/amd64 BuildDate: 2020-12-31T13:37:58Z 2.用hugo生成博客 ​	终端输入命令，在jzhou_blog文件夹中生成一个hugo站点
+jzhou@jzhou-virtual-machine:~/桌面$ hugo new site jzhou_blog ​	得到如下输出后，创建成功
+Congratulations! Your new Hugo site is created in /home/jzhou/桌面/jzhou_blog. Just a few more steps and you&#39;re ready to go: 1. Download a theme into the same-named folder. Choose a theme from https://themes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jzhou1997.github.io/post/blog/" />
+<meta property="article:published_time" content="2021-03-09T15:29:54+08:00" />
+<meta property="article:modified_time" content="2021-03-09T15:29:54+08:00" />
+
+  <meta itemprop="name" content="Linux下搭建hugo博客">
+<meta itemprop="description" content="Linux下搭建hugo博客 0.Hugo简介 ​	Hugo是由Go语言实现的静态网站生成器。简单、易用、高效、易扩展、快速部署。
+​	本博客主要参考了B站UP主CodeSheep的视频：https://www.bilibili.com/video/BV1q4411i7gL
+1.安装hugo ​	使用命令sudo apt-get install直接下载安装hugo，或者下载二进制.deb安装程序。 ​	下载后使用命令sudo dpkg -i hugo_0.80.0_Linux-64bit.deb 完成安装 ​	安装后查看hugo版本进行验证：
+jzhou@jzhou-virtual-machine:~/桌面$ hugo version Hugo Static Site Generator v0.80.0-792EF0F4 linux/amd64 BuildDate: 2020-12-31T13:37:58Z 2.用hugo生成博客 ​	终端输入命令，在jzhou_blog文件夹中生成一个hugo站点
+jzhou@jzhou-virtual-machine:~/桌面$ hugo new site jzhou_blog ​	得到如下输出后，创建成功
+Congratulations! Your new Hugo site is created in /home/jzhou/桌面/jzhou_blog. Just a few more steps and you&#39;re ready to go: 1. Download a theme into the same-named folder. Choose a theme from https://themes.">
+<meta itemprop="datePublished" content="2021-03-09T15:29:54+08:00" />
+<meta itemprop="dateModified" content="2021-03-09T15:29:54+08:00" />
+<meta itemprop="wordCount" content="279">
+
+
+
+<meta itemprop="keywords" content="" />
+
+</head>
+<body>
+
+  <header style="background-image:linear-gradient(
+      rgba(0,0,0,0.4),rgba(0,0,0,0.4)
+    ),url(&#39;https://jzhou1997.github.io/images/default-sidebar.jpg&#39;)">
+
+  <div class="intro">
+    <div class="logo-container">
+      <a href="/">
+        <img src='https://jzhou1997.github.io/images/edna-west.jpg' alt="Profile My New Hugo Site" class="rounded-logo">
+      </a>
+    </div>
+    <h2>Welcome, I'm John Doe</h2>
+    <h3>This is my personal website</h3>
+    <div class="menu">
+      
+
+      
+    </div>
+
+  </div>
+
+  <div class="socials">
+      
+  </div>
+
+</header>
+
+  <div class="content-wrapper">
+    
+    <main id="content" class="post">
+
+<h1>Linux下搭建hugo博客</h1>
+<div class="reading-time">
+  <div class="icon">
+  <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  
+  <path d="M57.5 11C29.05 11 6 34.05 6 62.5S29.05 114 57.5 114 109 90.95 109 62.5 85.95 11 57.5 11zm0 93.032c-22.947 0-41.532-18.585-41.532-41.532 0-22.947 18.585-41.532 41.532-41.532 22.947 0 41.532 18.585 41.532 41.532 0 22.947-18.585 41.532-41.532 41.532zm12.833-21.68L52.703 69.54a2.508 2.508 0 0 1-1.018-2.015V33.427a2.5 2.5 0 0 1 2.492-2.492h6.646a2.5 2.5 0 0 1 2.492 2.492v29.426l13.871 10.092c1.122.81 1.35 2.368.54 3.49l-3.904 5.377a2.51 2.51 0 0 1-3.489.54z"/>
+  
+  </svg>
+</div>
+
+  <span>2 minutes</span>
+</div>
+
+<div class="published-date">
+  <div class="icon">
+  <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  
+  <path d="M77.577 51.23a1.807 1.807 0 0 0-2.2.342l-27.562 27.79a1.807 1.807 0 0 1-2.2.342l-14.008-9.702a1.807 1.807 0 0 0-2.2.342l-1.952 1.968c-.287.22-.456.568-.455.936.001.37.172.716.46.934L45.637 86.77a1.807 1.807 0 0 0 2.2-.342l31.709-31.97c.287-.22.456-.567.455-.936a1.175 1.175 0 0 0-.46-.933l-1.963-1.36z"/><path d="M97.304 20H80.512c-.041.34-.063.683-.064 1.026a5.986 5.986 0 0 0 1.256 4.1c.054.003.103.02.157.025a4.881 4.881 0 0 1 1.865-.025c3.05.562 4.984 3.907 4.32 7.47-.666 3.563-3.678 5.996-6.728 5.433a4.932 4.932 0 0 1-2.437-1.258c-6.018-1.378-10.445-7.795-10.445-15.745 0-.347.023-.685.04-1.026H34.579c-.041.34-.063.683-.064 1.026a5.986 5.986 0 0 0 1.256 4.1c.054.003.103.02.157.025a4.881 4.881 0 0 1 1.865-.025c3.05.562 4.984 3.907 4.32 7.47-.666 3.563-3.678 5.996-6.728 5.433a4.932 4.932 0 0 1-2.437-1.258c-6.018-1.378-10.445-7.795-10.445-15.745 0-.22.019-.434.025-.652a9.788 9.788 0 0 0-5.697 4.471 9.683 9.683 0 0 0-2.65 4.764L1.158 92.871c-.965 4.689 2.6 8.503 7.948 8.503h6.334v2.673c-.077 5.41 4.263 9.861 9.705 9.953h72.16c5.438-.095 9.774-4.546 9.694-9.953V29.953c.08-5.407-4.256-9.858-9.695-9.953zM10.078 96.653c-2.378 0-3.964-1.697-3.535-3.782L16.637 43.84h80.787L87.331 92.871a5.254 5.254 0 0 1-5.091 3.782H10.078zm91.535 7.394c.036 2.403-1.891 4.382-4.308 4.424h-72.16c-2.42-.04-4.352-2.018-4.32-4.424v-2.673h60.443c5.348 0 10.484-3.814 11.449-8.503l8.897-43.215v54.391z"/><path d="M34.814 33c1.243 0 2.251-1.057 2.251-2.36 0-1.305-1.008-2.362-2.25-2.362-2.04 0-4.313-3.194-4.313-7.778s2.272-7.778 4.312-7.778c1.227 0 2.536 1.163 3.386 3.084H43C41.716 11.19 38.578 8 34.814 8 29.871 8 26 13.49 26 20.5c0 7.009 3.871 12.5 8.814 12.5z"/>
+  
+  </svg>
+</div>
+
+  <span>March 9, 2021</span>
+</div>
+
+<h1 id="linux下搭建hugo博客">Linux下搭建hugo博客</h1>
+<h2 id="0hugo简介">0.Hugo简介</h2>
+<p>​		Hugo是由Go语言实现的静态网站生成器。简单、易用、高效、易扩展、快速部署。</p>
+<p>​		本博客主要参考了B站UP主CodeSheep的视频：https://www.bilibili.com/video/BV1q4411i7gL</p>
+<h2 id="1安装hugo">1.安装hugo</h2>
+<p>​		使用命令sudo apt-get install直接下载安装hugo，或者下载二进制.deb安装程序。
+​		下载后使用命令sudo dpkg -i hugo_0.80.0_Linux-64bit.deb 完成安装
+​		安装后查看hugo版本进行验证：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面$ hugo version
+Hugo Static Site Generator v0.80.0-792EF0F4 linux/amd64 BuildDate: 2020-12-31T13:37:58Z
+</code></pre></div><h2 id="2用hugo生成博客">2.用hugo生成博客</h2>
+<p>​		终端输入命令，在jzhou_blog文件夹中生成一个hugo站点</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面$ hugo new site jzhou_blog
+</code></pre></div><p>​		得到如下输出后，创建成功</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Congratulations! Your new Hugo site is created in /home/jzhou/桌面/jzhou_blog.
+
+Just a few more steps and you<span style="color:#960050;background-color:#1e0010">&#39;</span>re ready to go:
+
+1. Download a theme into the same-named folder.
+   Choose a theme from https://themes.gohugo.io/ or
+   create your own with the <span style="color:#e6db74">&#34;hugo new theme &lt;THEMENAME&gt;&#34;</span> command.
+2. Perhaps you want to add some content. You can add single files
+   with <span style="color:#e6db74">&#34;hugo new &lt;SECTIONNAME&gt;/&lt;FILENAME&gt;.&lt;FORMAT&gt;&#34;</span>.
+3. Start the built-in live server via <span style="color:#e6db74">&#34;hugo server&#34;</span>.
+
+Visit https://gohugo.io/ <span style="color:#66d9ef">for</span> quickstart guide and full documentation.
+</code></pre></div><p>​		进入博客根目录，可以看到已经成为了themes、static、layouts、data、content等文件。</p>
+<h2 id="3下载并设置主题">3.下载并设置主题</h2>
+<p>​		从https://themes.gohugo.io上挑选想要的主题，复制下载命令。进入themes目录下，终端输入</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面/jzhou_blog/themes$ git clone https://github.com.cnpmjs.org/bjacquemet/personal-web
+</code></pre></div><p>得到输出</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">正克隆到 <span style="color:#e6db74">&#39;personal-web&#39;</span>...
+remote: Enumerating objects: 345, <span style="color:#66d9ef">done</span>.
+remote: Total <span style="color:#ae81ff">345</span> <span style="color:#f92672">(</span>delta 0<span style="color:#f92672">)</span>, reused <span style="color:#ae81ff">0</span> <span style="color:#f92672">(</span>delta 0<span style="color:#f92672">)</span>, pack-reused <span style="color:#ae81ff">345</span>
+接收对象中: 100% <span style="color:#f92672">(</span>345/345<span style="color:#f92672">)</span>, 8.75 MiB | 544.00 KiB/s, 完成.
+处理 delta 中: 100% <span style="color:#f92672">(</span>148/148<span style="color:#f92672">)</span>, 完成.
+</code></pre></div><p>​		在进行这一步之前，需要配置好git工具，网上的教程很多，这里就不再介绍了
+在使用git clone命令时，经常碰到速度极慢的情况，为此可以使用Github的国内镜像，如github.com.cnpmjs.org，在clone某个项目的时候，可以将github.com替换为github.com.cnpmjs.org。</p>
+<p>​		clone后可以看到在themes里多了一个personal-web文件，这说明主题已经下载成功了。</p>
+<h2 id="4在本地启动博客">4.在本地启动博客</h2>
+<p>​		下载主题后，就可以在本地启动博客了，进入博客的根目录下，执行命令hugo server -t personal-web &ndash;buildDrafts ，其中personal-web为主题名，可根据自己的主题名进行更换。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">personal-web --buildDrafts ，其中personal-web为主题名，可根据自己的主题名进行更换
+jzhou@jzhou-virtual-machine:~/桌面/jzhou_blog$ hugo server -t personal-web --buildDrafts
+Start building sites … 
+
+                   | EN  
+-------------------+-----
+  Pages            |  <span style="color:#ae81ff">7</span>  
+  Paginator pages  |  <span style="color:#ae81ff">0</span>  
+  Non-page files   |  <span style="color:#ae81ff">0</span>  
+  Static files     |  <span style="color:#ae81ff">3</span>  
+  Processed images |  <span style="color:#ae81ff">0</span>  
+  Aliases          |  <span style="color:#ae81ff">0</span>  
+  Sitemaps         |  <span style="color:#ae81ff">1</span>  
+  Cleaned          |  <span style="color:#ae81ff">0</span>  
+
+Built in <span style="color:#ae81ff">104</span> ms
+Watching <span style="color:#66d9ef">for</span> changes in /home/jzhou/桌面/jzhou_blog/<span style="color:#f92672">{</span>archetypes,content,data,layouts,static,themes<span style="color:#f92672">}</span>
+Watching <span style="color:#66d9ef">for</span> config changes in /home/jzhou/桌面/jzhou_blog/config.toml
+Environment: <span style="color:#e6db74">&#34;development&#34;</span>
+Serving pages from memory
+Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+Web Server is available at http://localhost:1313/ <span style="color:#f92672">(</span>bind address 127.0.0.1<span style="color:#f92672">)</span>
+Press Ctrl+C to stop
+</code></pre></div><p>​		打开浏览器，进入http://localhost:1313/ ，可以打开本地博客：</p>
+<p><img src="/home/jzhou/%E6%A1%8C%E9%9D%A2/jzhou_blog/data/blog.png" alt=""></p>
+<h2 id="5写第一篇博客">5.写第一篇博客</h2>
+<p>​		回到博客的根目录，准备写第一篇博客，生成md文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面/jzhou_blog$ hugo new post/blog.md
+/home/jzhou/桌面/jzhou_blog/content/post/blog.md created
+</code></pre></div><p>生成的blog.md在根目录下的content/post/下
+编辑md文件，可以选择一款Marddown编辑器来完成md文件的编辑，这里我使用的是Typora，各位可以根据自己的爱好选择。</p>
+
+
+    </main>
+  </div>
+  <footer>
+    <div class="footer-wrapper">
+      <p>Made with ❤️ &mdash; Powered by <a href="https://gohugo.io/" target="_blank" rel="external">Hugo</a> and the <a href="https://github.com/bjacquemet/personal-web" target='_blank' rel="external">Personal Web</a> theme. Icons come from the great <a href="https://fontawesome.com/license" target="_blank" rel="external">Font Awesome</a> library</p>
+      <p></p>
+    </div>
+  </footer>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:500,600|Raleway:400,400i,600" rel="stylesheet">
+  
+</body>
+</html>
