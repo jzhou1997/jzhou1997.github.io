@@ -40,7 +40,7 @@ jzhou@jzhou-virtual-machine:~/桌面$ hugo new site jzhou_blog ​	得到如下�
 Congratulations! Your new Hugo site is created in /home/jzhou/桌面/jzhou_blog. Just a few more steps and you&#39;re ready to go: 1. Download a theme into the same-named folder. Choose a theme from https://themes.">
 <meta itemprop="datePublished" content="2021-03-09T15:29:54+08:00" />
 <meta itemprop="dateModified" content="2021-03-09T15:29:54+08:00" />
-<meta itemprop="wordCount" content="512">
+<meta itemprop="wordCount" content="509">
 
 
 
@@ -59,7 +59,7 @@ Congratulations! Your new Hugo site is created in /home/jzhou/桌面/jzhou_blog.
         <img src='https://jzhou1997.github.io/images/edna-west.jpg' alt="Profile My New Hugo Site" class="rounded-logo">
       </a>
     </div>
-    <h2>Welcome, I'm John Doe</h2>
+    <h2>Welcome, I'm JZhou_1997</h2>
     <h3>This is my personal website</h3>
     <div class="menu">
       
@@ -74,6 +74,7 @@ Congratulations! Your new Hugo site is created in /home/jzhou/桌面/jzhou_blog.
   </div>
 
 </header>
+
 
   <div class="content-wrapper">
     
@@ -113,12 +114,12 @@ Congratulations! Your new Hugo site is created in /home/jzhou/桌面/jzhou_blog.
 ​		下载后使用命令sudo dpkg -i hugo_0.80.0_Linux-64bit.deb 完成安装
 ​		安装后查看hugo版本进行验证：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面$ hugo version
-Hugo Static Site Generator v0.80.0-792EF0F4 linux/amd64 BuildDate: 2020-12-31T13:37:58Z
+Hugo Static Site Generator v0.80.0-792EF0F4 linux/amd64 BuildDate: 2020-12-31T13:37:58Z  
 </code></pre></div><h2 id="2用hugo生成博客">2.用hugo生成博客</h2>
 <p>​		终端输入命令，在jzhou_blog文件夹中生成一个hugo站点</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面$ hugo new site jzhou_blog
 </code></pre></div><p>​		得到如下输出后，创建成功</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Congratulations! Your new Hugo site is created in /home/jzhou/桌面/jzhou_blog.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Congratulations! Your new Hugo site is created in /home/jzhou/桌面/jzhou_blog.  
 
 Just a few more steps and you<span style="color:#960050;background-color:#1e0010">&#39;</span>re ready to go:
 
@@ -133,7 +134,7 @@ Visit https://gohugo.io/ <span style="color:#66d9ef">for</span> quickstart guide
 </code></pre></div><p>​		进入博客根目录，可以看到已经成为了themes、static、layouts、data、content等文件。</p>
 <h2 id="3下载并设置主题">3.下载并设置主题</h2>
 <p>​		从https://themes.gohugo.io上挑选想要的主题，复制下载命令。进入themes目录下，终端输入</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面/jzhou_blog/themes$ git clone https://github.com.cnpmjs.org/bjacquemet/personal-web
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面/jzhou_blog/themes$ git clone https://github.com.cnpmjs.org/bjacquemet/personal-web     
 </code></pre></div><p>得到输出</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">正克隆到 <span style="color:#e6db74">&#39;personal-web&#39;</span>...
 remote: Enumerating objects: 345, <span style="color:#66d9ef">done</span>.
@@ -145,8 +146,7 @@ remote: Total <span style="color:#ae81ff">345</span> <span style="color:#f92672"
 <p>​		clone后可以看到在themes里多了一个personal-web文件，这说明主题已经下载成功了。</p>
 <h2 id="4在本地启动博客">4.在本地启动博客</h2>
 <p>​		下载主题后，就可以在本地启动博客了，进入博客的根目录下，执行命令hugo server -t personal-web &ndash;buildDrafts ，其中personal-web为主题名，可根据自己的主题名进行更换。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">personal-web --buildDrafts ，其中personal-web为主题名，可根据自己的主题名进行更换
-jzhou@jzhou-virtual-machine:~/桌面/jzhou_blog$ hugo server -t personal-web --buildDrafts
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面/jzhou_blog$ hugo server -t personal-web --buildDrafts  
 Start building sites … 
 
                    | EN  
@@ -169,7 +169,7 @@ Running in Fast Render Mode. For full rebuilds on change: hugo server --disableF
 Web Server is available at http://localhost:1313/ <span style="color:#f92672">(</span>bind address 127.0.0.1<span style="color:#f92672">)</span>
 Press Ctrl+C to stop
 </code></pre></div><p>​		打开浏览器，进入http://localhost:1313/ ，可以打开本地博客：</p>
-<p><img src="/home/jzhou/%E6%A1%8C%E9%9D%A2/jzhou_blog/content/post/blog.png" alt=""></p>
+<p><img src="https://i.loli.net/2021/03/10/jWBvrug12K3EXSG.png" alt="blog.png"></p>
 <h2 id="5写第一篇博客">5.写第一篇博客</h2>
 <p>​		回到博客的根目录，准备写第一篇博客，生成md文件</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面/jzhou_blog$ hugo new post/blog.md
@@ -179,10 +179,10 @@ Press Ctrl+C to stop
 <h2 id="6将博客部署到远端服务器">6.将博客部署到远端服务器</h2>
 <h3 id="a创建仓库">a.创建仓库</h3>
 <p>​		登陆github，点击左上角＋，选择New repository新建一个仓库，再填写仓库的地址，按照昵称全小写.github.io完成创建。（注：必须是昵称的全小写）</p>
-<p><img src="/home/jzhou/%E6%A1%8C%E9%9D%A2/jzhou_blog/content/post/blog2.png" alt=""></p>
+<p><img src="https://i.loli.net/2021/03/10/SRmKhg5XMErc1Cv.png" alt="blog2.png"></p>
 <h3 id="b生成博客页面">b.生成博客页面</h3>
 <p>​		使用hugo命令生成静态网页，终端输入（&ndash;theme=personal-web 指定主题   &ndash;baseUrl=&ldquo;<a href="https://jzhou1997.github.io">https://jzhou1997.github.io</a>&rdquo; 指定仓库地址）</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面/jzhou_blog$ hugo --theme<span style="color:#f92672">=</span>personal-web --baseUrl<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://jzhou1997.github.io&#34;</span> --buildDrafts
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面/jzhou_blog$ hugo --theme<span style="color:#f92672">=</span>personal-web --baseUrl<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://jzhou1997.github.io&#34;</span> --buildDrafts  
 Start building sites … 
 
                    | EN  
@@ -205,7 +205,7 @@ Total in <span style="color:#ae81ff">1526</span> ms
 </code></pre></div><h3 id="dgit-add-将所有的东西添加进仓库">d.git add *将所有的东西添加进仓库</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面/jzhou_blog/public$ git add *
 </code></pre></div><h3 id="e提交">e.提交</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面/jzhou_blog/public$ git commit -m <span style="color:#e6db74">&#34;hugo 第一 次提交&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面/jzhou_blog/public$ git commit -m <span style="color:#e6db74">&#34;hugo 第一 次提交&#34;</span>  
 <span style="color:#f92672">[</span>master （根提交） 6c9fed0<span style="color:#f92672">]</span> hugo 第一次提交
  <span style="color:#ae81ff">16</span> files changed, <span style="color:#ae81ff">781</span> insertions<span style="color:#f92672">(</span>+<span style="color:#f92672">)</span>
  create mode <span style="color:#ae81ff">100644</span> 404.html
@@ -229,7 +229,7 @@ Total in <span style="color:#ae81ff">1526</span> ms
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面/jzhou_blog/public$ git remote add origin https://github.com/jzhou1997/jzhou1997.github.io.git
 </code></pre></div><h3 id="g将博客推到github仓库">g.将博客推到github仓库</h3>
 <p>​		输入完git命令后，根据提示输入GitHub的账号和密码</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面/jzhou_blog/public$ git push -u origin masterUsername <span style="color:#66d9ef">for</span> <span style="color:#e6db74">&#39;https://github.com&#39;</span>: jzhou1997
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jzhou@jzhou-virtual-machine:~/桌面/jzhou_blog/public$ git push -u   origin masterUsername <span style="color:#66d9ef">for</span> <span style="color:#e6db74">&#39;https://github.com&#39;</span>: jzhou1997   
 Password <span style="color:#66d9ef">for</span> <span style="color:#e6db74">&#39;https://jzhou1997@github.com&#39;</span>: 
 枚举对象: 24, 完成.
 对象计数中: 100% <span style="color:#f92672">(</span>24/24<span style="color:#f92672">)</span>, 完成.
@@ -243,7 +243,7 @@ To https://github.com/jzhou1997/jzhou1997.github.io.git
 分支 <span style="color:#e6db74">&#39;master&#39;</span> 设置为跟踪来自 <span style="color:#e6db74">&#39;origin&#39;</span> 的远程分支 <span style="color:#e6db74">&#39;master&#39;</span>。
 </code></pre></div><p>​		完成后，进入远程仓库可以看到提交的文件了，博客搭建完成。
 ​		在浏览器使用仓库地址，如jzhou1997.github.io，便可以访问博客：</p>
-<p><img src="/home/jzhou/%E6%A1%8C%E9%9D%A2/jzhou_blog/content/post/blog3.png" alt=""></p>
+<p><img src="https://i.loli.net/2021/03/10/q8FtDCOdV5scfHQ.png" alt="blog3.png"></p>
 
 
     </main>
