@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>STL学习笔记1——初识STL - My New Hugo Site</title>
+  <link rel='canonical' href='https://jzhou1997.github.io/post/blog2/' />
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <meta name='description' content='' />
+  <meta name='theme-color' content='black' />
+  
+
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  
+
+
+
+
+
+<link rel="stylesheet" href="https://jzhou1997.github.io/sass/style.min.8a1658d134a4b54730b66789206b2cf14c1b006a6de3f3fde6302f925b6e01f5.css" integrity="sha256-ihZY0TSktUcwtmeJIGss8UwbAGpt4/P95jAvkltuAfU=" media="screen">
+<link rel="stylesheet" href="https://jzhou1997.github.io/syntax.min.css" integrity="" media="screen">
+
+  <meta property="og:title" content="STL学习笔记1——初识STL" />
+<meta property="og:description" content="STL学习笔记1——初识STL STL的诞生 ​	长久以来，软件界一直希望建立可重复利用的东西。C&#43;&#43;的面向对象（封装、继承、多态）和泛型编程（模板）思想，目的就是复用性的提升，为了建立数据结构和算法的一套标准，并降低他们之间的耦合，这就诞生了STL。
+STL基本概念 ​
+​	STL（Standard Template Library 标准模板库），几乎所有的代码都采用了模板类或者模板函数，相比于传统的由函数和类组成的库来说提供了更好的代码重用机会，从广义上可以分成容器（container）、算法（algorithm）、迭代器（iterator）。容器和算法之间通过迭代器进行无缝连接。
+​	六大组件：容器、算法、迭代器、仿函数、适配器、空间配置器：
+ 容器：各种数据结构，如vector、list、deque、set、map等,用来存放数据。 算法：各种常用的算法，如sort、find、copy、for_each等 迭代器：扮演了容器与算法之间的胶合剂，所有STL容器都附带有自己专属的迭代器。 仿函数：行为类似函数，可作为算法的某种策略。 适配器：一种用来修饰容器或者仿函数或迭代器接口的东西。 空间配置器：负责空间的配置与管理，实现动态空间配置、空间管理、空间释放  ​ 六大组件之间的关系，容器通过空间配置器获得数据存储空间，算法通过迭代器存储容器中的内容，仿函 数可以协助算法完成不同的策略的变化，适配器可以修饰仿函数。
+STL中容器、算法、迭代器 ​	容器：将运用最广泛的一些数据结构实现出来，常见的数据结构有array、list、tree、stack、queue、set、map，根据数据在容器中的排列顺序，可以分成序列式容器和关联式容器。 序列式容器：强调值的排序，容器中每个元素有固定的位置 关联式容器：二叉树结构，元素间没有严格的物理上的顺序关系
+​	算法：解决问题的方法，以有限的步骤，解决逻辑或数学上的问题。 质变算法：运算过程中会更改区间内的元素的内容。如拷贝、替换 非质变算法：运算过程中不会更改区间内的元素的内容。如查找、遍历
+​	迭代器：容器和算法之间粘合剂。算法要通过迭代器才能访问容器中的元素，STL的中心思想在于将容器(container)和算法(algorithms)分开，彼此独立设计，最后再一贴胶着剂将他们撮合在一起。每个容器都有自己专属的迭代器 ，有点类似于指针。迭代器的种类如下：
+简单示例 #include&lt;iostream&gt;#include&lt;vector&gt;#include&lt;algorithm&gt;using namespace std; //迭代器示例 存放基础数据类型 void Print(int tmp) { cout &lt;&lt; tmp &lt;&lt; endl; } void test01() { //创建一个vector容器 vector&lt;int&gt; v; //向vector容器插入数据 v.push_back(2); v.push_back(4); v.push_back(6); v.push_back(8); //起始迭代器，返回容器中的第一个元素 vector&lt;int&gt;::iterator Vstart = v.begin(); //结束迭代器，返回容器中的最后一个元素的下一个位置 vector&lt;int&gt;::iterator Vend = v." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jzhou1997.github.io/post/blog2/" />
+<meta property="article:published_time" content="2021-03-18T00:25:58+08:00" />
+<meta property="article:modified_time" content="2021-03-18T00:25:58+08:00" />
+
+  <meta itemprop="name" content="STL学习笔记1——初识STL">
+<meta itemprop="description" content="STL学习笔记1——初识STL STL的诞生 ​	长久以来，软件界一直希望建立可重复利用的东西。C&#43;&#43;的面向对象（封装、继承、多态）和泛型编程（模板）思想，目的就是复用性的提升，为了建立数据结构和算法的一套标准，并降低他们之间的耦合，这就诞生了STL。
+STL基本概念 ​
+​	STL（Standard Template Library 标准模板库），几乎所有的代码都采用了模板类或者模板函数，相比于传统的由函数和类组成的库来说提供了更好的代码重用机会，从广义上可以分成容器（container）、算法（algorithm）、迭代器（iterator）。容器和算法之间通过迭代器进行无缝连接。
+​	六大组件：容器、算法、迭代器、仿函数、适配器、空间配置器：
+ 容器：各种数据结构，如vector、list、deque、set、map等,用来存放数据。 算法：各种常用的算法，如sort、find、copy、for_each等 迭代器：扮演了容器与算法之间的胶合剂，所有STL容器都附带有自己专属的迭代器。 仿函数：行为类似函数，可作为算法的某种策略。 适配器：一种用来修饰容器或者仿函数或迭代器接口的东西。 空间配置器：负责空间的配置与管理，实现动态空间配置、空间管理、空间释放  ​ 六大组件之间的关系，容器通过空间配置器获得数据存储空间，算法通过迭代器存储容器中的内容，仿函 数可以协助算法完成不同的策略的变化，适配器可以修饰仿函数。
+STL中容器、算法、迭代器 ​	容器：将运用最广泛的一些数据结构实现出来，常见的数据结构有array、list、tree、stack、queue、set、map，根据数据在容器中的排列顺序，可以分成序列式容器和关联式容器。 序列式容器：强调值的排序，容器中每个元素有固定的位置 关联式容器：二叉树结构，元素间没有严格的物理上的顺序关系
+​	算法：解决问题的方法，以有限的步骤，解决逻辑或数学上的问题。 质变算法：运算过程中会更改区间内的元素的内容。如拷贝、替换 非质变算法：运算过程中不会更改区间内的元素的内容。如查找、遍历
+​	迭代器：容器和算法之间粘合剂。算法要通过迭代器才能访问容器中的元素，STL的中心思想在于将容器(container)和算法(algorithms)分开，彼此独立设计，最后再一贴胶着剂将他们撮合在一起。每个容器都有自己专属的迭代器 ，有点类似于指针。迭代器的种类如下：
+简单示例 #include&lt;iostream&gt;#include&lt;vector&gt;#include&lt;algorithm&gt;using namespace std; //迭代器示例 存放基础数据类型 void Print(int tmp) { cout &lt;&lt; tmp &lt;&lt; endl; } void test01() { //创建一个vector容器 vector&lt;int&gt; v; //向vector容器插入数据 v.push_back(2); v.push_back(4); v.push_back(6); v.push_back(8); //起始迭代器，返回容器中的第一个元素 vector&lt;int&gt;::iterator Vstart = v.begin(); //结束迭代器，返回容器中的最后一个元素的下一个位置 vector&lt;int&gt;::iterator Vend = v.">
+<meta itemprop="datePublished" content="2021-03-18T00:25:58+08:00" />
+<meta itemprop="dateModified" content="2021-03-18T00:25:58+08:00" />
+<meta itemprop="wordCount" content="308">
+
+
+
+<meta itemprop="keywords" content="" />
+
+</head>
+<body>
+
+  <header style="background-image:linear-gradient(
+      rgba(0,0,0,0.4),rgba(0,0,0,0.4)
+    ),url(&#39;https://jzhou1997.github.io/images/default-sidebar.jpg&#39;)">
+
+  <div class="intro">
+    <div class="logo-container">
+      <a href="/">
+        <img src='https://jzhou1997.github.io/images/edna-west.jpg' alt="Profile Linux下搭建hugo博客" class="rounded-logo">
+      </a>
+    </div>
+    <h2>Welcome, I'm JZhou_1997</h2>
+    <h3>This is my personal website</h3>
+    <div class="menu">
+      
+
+      
+    </div>
+
+  </div>
+
+  <div class="socials">
+      
+  </div>
+
+</header>
+
+
+  <div class="content-wrapper">
+    
+    <main id="content" class="post">
+
+<h1>STL学习笔记1——初识STL</h1>
+<div class="reading-time">
+  <div class="icon">
+  <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  
+  <path d="M57.5 11C29.05 11 6 34.05 6 62.5S29.05 114 57.5 114 109 90.95 109 62.5 85.95 11 57.5 11zm0 93.032c-22.947 0-41.532-18.585-41.532-41.532 0-22.947 18.585-41.532 41.532-41.532 22.947 0 41.532 18.585 41.532 41.532 0 22.947-18.585 41.532-41.532 41.532zm12.833-21.68L52.703 69.54a2.508 2.508 0 0 1-1.018-2.015V33.427a2.5 2.5 0 0 1 2.492-2.492h6.646a2.5 2.5 0 0 1 2.492 2.492v29.426l13.871 10.092c1.122.81 1.35 2.368.54 3.49l-3.904 5.377a2.51 2.51 0 0 1-3.489.54z"/>
+  
+  </svg>
+</div>
+
+  <span>2 minutes</span>
+</div>
+
+<div class="published-date">
+  <div class="icon">
+  <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  
+  <path d="M77.577 51.23a1.807 1.807 0 0 0-2.2.342l-27.562 27.79a1.807 1.807 0 0 1-2.2.342l-14.008-9.702a1.807 1.807 0 0 0-2.2.342l-1.952 1.968c-.287.22-.456.568-.455.936.001.37.172.716.46.934L45.637 86.77a1.807 1.807 0 0 0 2.2-.342l31.709-31.97c.287-.22.456-.567.455-.936a1.175 1.175 0 0 0-.46-.933l-1.963-1.36z"/><path d="M97.304 20H80.512c-.041.34-.063.683-.064 1.026a5.986 5.986 0 0 0 1.256 4.1c.054.003.103.02.157.025a4.881 4.881 0 0 1 1.865-.025c3.05.562 4.984 3.907 4.32 7.47-.666 3.563-3.678 5.996-6.728 5.433a4.932 4.932 0 0 1-2.437-1.258c-6.018-1.378-10.445-7.795-10.445-15.745 0-.347.023-.685.04-1.026H34.579c-.041.34-.063.683-.064 1.026a5.986 5.986 0 0 0 1.256 4.1c.054.003.103.02.157.025a4.881 4.881 0 0 1 1.865-.025c3.05.562 4.984 3.907 4.32 7.47-.666 3.563-3.678 5.996-6.728 5.433a4.932 4.932 0 0 1-2.437-1.258c-6.018-1.378-10.445-7.795-10.445-15.745 0-.22.019-.434.025-.652a9.788 9.788 0 0 0-5.697 4.471 9.683 9.683 0 0 0-2.65 4.764L1.158 92.871c-.965 4.689 2.6 8.503 7.948 8.503h6.334v2.673c-.077 5.41 4.263 9.861 9.705 9.953h72.16c5.438-.095 9.774-4.546 9.694-9.953V29.953c.08-5.407-4.256-9.858-9.695-9.953zM10.078 96.653c-2.378 0-3.964-1.697-3.535-3.782L16.637 43.84h80.787L87.331 92.871a5.254 5.254 0 0 1-5.091 3.782H10.078zm91.535 7.394c.036 2.403-1.891 4.382-4.308 4.424h-72.16c-2.42-.04-4.352-2.018-4.32-4.424v-2.673h60.443c5.348 0 10.484-3.814 11.449-8.503l8.897-43.215v54.391z"/><path d="M34.814 33c1.243 0 2.251-1.057 2.251-2.36 0-1.305-1.008-2.362-2.25-2.362-2.04 0-4.313-3.194-4.313-7.778s2.272-7.778 4.312-7.778c1.227 0 2.536 1.163 3.386 3.084H43C41.716 11.19 38.578 8 34.814 8 29.871 8 26 13.49 26 20.5c0 7.009 3.871 12.5 8.814 12.5z"/>
+  
+  </svg>
+</div>
+
+  <span>March 18, 2021</span>
+</div>
+
+<h1 id="stl学习笔记1初识stl">STL学习笔记1——初识STL</h1>
+<h2 id="stl的诞生">STL的诞生</h2>
+<p>​			长久以来，软件界一直希望建立可重复利用的东西。C++的面向对象（封装、继承、多态）和泛型编程（模板）思想，目的就是复用性的提升，为了建立数据结构和算法的一套标准，并降低他们之间的耦合，这就诞生了STL。</p>
+<h2 id="stl基本概念">STL基本概念</h2>
+<p>​</p>
+<p>​			STL（Standard Template Library 标准模板库），几乎所有的代码都采用了模板类或者模板函数，相比于传统的由函数和类组成的库来说提供了更好的代码重用机会，从广义上可以分成容器（container）、算法（algorithm）、迭代器（iterator）。容器和算法之间通过迭代器进行无缝连接。</p>
+<p>​			六大组件：容器、算法、迭代器、仿函数、适配器、空间配置器：</p>
+<ol>
+<li>容器：各种数据结构，如vector、list、deque、set、map等,用来存放数据。</li>
+<li>算法：各种常用的算法，如sort、find、copy、for_each等</li>
+<li>迭代器：扮演了容器与算法之间的胶合剂，所有STL容器都附带有自己专属的迭代器。</li>
+<li>仿函数：行为类似函数，可作为算法的某种策略。</li>
+<li>适配器：一种用来修饰容器或者仿函数或迭代器接口的东西。</li>
+<li>空间配置器：负责空间的配置与管理，实现动态空间配置、空间管理、空间释放</li>
+</ol>
+<p>​          六大组件之间的关系，容器通过空间配置器获得数据存储空间，算法通过迭代器存储容器中的内容，仿函 数可以协助算法完成不同的策略的变化，适配器可以修饰仿函数。</p>
+<h2 id="stl中容器算法迭代器">STL中容器、算法、迭代器</h2>
+<p>​		容器：将运用最广泛的一些数据结构实现出来，常见的数据结构有array、list、tree、stack、queue、set、map，根据数据在容器中的排列顺序，可以分成序列式容器和关联式容器。
+序列式容器：强调值的排序，容器中每个元素有固定的位置
+关联式容器：二叉树结构，元素间没有严格的物理上的顺序关系</p>
+<p>​		算法：解决问题的方法，以有限的步骤，解决逻辑或数学上的问题。
+质变算法：运算过程中会更改区间内的元素的内容。如拷贝、替换
+非质变算法：运算过程中不会更改区间内的元素的内容。如查找、遍历</p>
+<p>​		迭代器：容器和算法之间粘合剂。算法要通过迭代器才能访问容器中的元素，STL的中心思想在于将容器(container)和算法(algorithms)分开，彼此独立设计，最后再一贴胶着剂将他们撮合在一起。每个容器都有自己专属的迭代器 ，有点类似于指针。迭代器的种类如下：</p>
+<p><img src="https://i.loli.net/2021/03/18/6ubmjqch71JGHIV.png" alt="iterator.png"></p>
+<h2 id="简单示例">简单示例</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;algorithm&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+
+<span style="color:#75715e">//迭代器示例 存放基础数据类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Print</span>(<span style="color:#66d9ef">int</span> tmp)
+{
+	cout <span style="color:#f92672">&lt;&lt;</span> tmp <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test01</span>()
+{
+<span style="color:#75715e">//创建一个vector容器
+</span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> v;
+<span style="color:#75715e">//向vector容器插入数据
+</span><span style="color:#75715e"></span>v.push_back(<span style="color:#ae81ff">2</span>);
+v.push_back(<span style="color:#ae81ff">4</span>);
+v.push_back(<span style="color:#ae81ff">6</span>);
+v.push_back(<span style="color:#ae81ff">8</span>);
+<span style="color:#75715e">//起始迭代器，返回容器中的第一个元素
+</span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;::</span>iterator Vstart <span style="color:#f92672">=</span> v.begin();
+<span style="color:#75715e">//结束迭代器，返回容器中的最后一个元素的下一个位置
+</span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;::</span>iterator Vend <span style="color:#f92672">=</span> v.end();
+<span style="color:#75715e">//通过迭代器遍历容器的元素
+</span><span style="color:#75715e">//第一种
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">while</span> (Vstart <span style="color:#f92672">!=</span> Vend)
+{
+	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>Vstart <span style="color:#f92672">&lt;&lt;</span> endl;
+	Vstart<span style="color:#f92672">++</span>;
+}
+<span style="color:#75715e">//第二种
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> (vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;::</span>iterator it <span style="color:#f92672">=</span> v.begin(); it <span style="color:#f92672">!=</span> v.end(); it<span style="color:#f92672">++</span>)
+{
+	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>it <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+<span style="color:#75715e">//第三种  STL中的遍历算法 for_each
+</span><span style="color:#75715e"></span>for_each(v.begin(), v.end(), Print);
+}
+<span style="color:#75715e">//容器存放自定义数据类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Student</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	Student(string name, <span style="color:#66d9ef">int</span> age)
+	{
+		<span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>S_name <span style="color:#f92672">=</span> name;
+		<span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>S_age <span style="color:#f92672">=</span> age;
+	}
+	string S_name;
+	<span style="color:#66d9ef">int</span> S_age;
+};
+<span style="color:#75715e">//容器存放自定义类对象
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test02</span>()
+{
+	vector<span style="color:#f92672">&lt;</span>Student<span style="color:#f92672">&gt;</span> stu;
+	Student S1(<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#ae81ff">16</span>);
+	Student S2(<span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#ae81ff">17</span>);
+	Student S3(<span style="color:#e6db74">&#34;c&#34;</span>, <span style="color:#ae81ff">18</span>);
+	Student S4(<span style="color:#e6db74">&#34;d&#34;</span>, <span style="color:#ae81ff">19</span>);
+
+	stu.push_back(S1);
+	stu.push_back(S2);
+	stu.push_back(S3);
+	stu.push_back(S4);
+
+	<span style="color:#66d9ef">for</span> (vector<span style="color:#f92672">&lt;</span>Student<span style="color:#f92672">&gt;::</span>iterator it <span style="color:#f92672">=</span> stu.begin(); it <span style="color:#f92672">!=</span> stu.end(); it<span style="color:#f92672">++</span>)
+	{
+		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Name:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> (<span style="color:#f92672">*</span>it).S_name <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;  Age:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> (<span style="color:#f92672">*</span>it).S_age <span style="color:#f92672">&lt;&lt;</span> endl;
+		<span style="color:#75715e">/*不能写成*it.S_name,因为编译器会认为这是在访问it对象
+</span><span style="color:#75715e">		的成员S_name然后再解引用，涉及到运算符的优先级*/</span>
+	}
+}
+<span style="color:#75715e">//容器存放对象指针
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test03</span>()
+{
+	vector<span style="color:#f92672">&lt;</span>Student<span style="color:#f92672">*&gt;</span> stu;
+	Student S1(<span style="color:#e6db74">&#34;aa&#34;</span>, <span style="color:#ae81ff">26</span>);
+	Student S2(<span style="color:#e6db74">&#34;bb&#34;</span>, <span style="color:#ae81ff">27</span>);
+	Student S3(<span style="color:#e6db74">&#34;cc&#34;</span>, <span style="color:#ae81ff">28</span>);
+	Student S4(<span style="color:#e6db74">&#34;dd&#34;</span>, <span style="color:#ae81ff">29</span>);
+
+	stu.push_back(<span style="color:#f92672">&amp;</span>S1);
+	stu.push_back(<span style="color:#f92672">&amp;</span>S2);
+	stu.push_back(<span style="color:#f92672">&amp;</span>S3);
+	stu.push_back(<span style="color:#f92672">&amp;</span>S4);
+
+	<span style="color:#66d9ef">for</span> (vector<span style="color:#f92672">&lt;</span>Student<span style="color:#f92672">*&gt;::</span>iterator it <span style="color:#f92672">=</span> stu.begin(); it <span style="color:#f92672">!=</span> stu.end(); it<span style="color:#f92672">++</span>) {
+		Student<span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>(it);
+		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Name:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> p<span style="color:#f92672">-&gt;</span>S_name <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;  Age:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> p<span style="color:#f92672">-&gt;</span>S_age <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+}
+<span style="color:#75715e">//容器嵌套
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test04</span>()
+{
+	vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span>v;
+	<span style="color:#75715e">//创建小容器
+</span><span style="color:#75715e"></span>	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>v1;
+	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>v2;
+	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>v3;
+
+	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; i<span style="color:#f92672">++</span>) {
+		v1.push_back(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+		v2.push_back(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>);
+		v3.push_back(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">100</span>);
+	}
+	<span style="color:#75715e">//将小容器插入到v中
+</span><span style="color:#75715e"></span>	v.push_back(v1);
+	v.push_back(v2);
+	v.push_back(v3);
+
+	<span style="color:#75715e">//遍历
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">for</span> (vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;::</span>iterator it <span style="color:#f92672">=</span> v.begin(); it <span style="color:#f92672">!=</span> v.end(); it<span style="color:#f92672">++</span>) {
+		<span style="color:#75715e">//(*it)是容器vector&lt;int&gt; 再遍历一次（*it）
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">for</span> (vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;::</span>iterator vit <span style="color:#f92672">=</span> (<span style="color:#f92672">*</span>it).begin(); vit <span style="color:#f92672">!=</span> (<span style="color:#f92672">*</span>it).end(); vit<span style="color:#f92672">++</span>) {
+			cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>vit <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>;
+		}
+		cout <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+	test01();
+	test02();
+	test03();
+	test04();
+	system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+
+</code></pre></div>
+
+    </main>
+  </div>
+  <footer>
+    <div class="footer-wrapper">
+      <p>Made with ❤️ &mdash; Powered by <a href="https://gohugo.io/" target="_blank" rel="external">Hugo</a> and the <a href="https://github.com/bjacquemet/personal-web" target='_blank' rel="external">Personal Web</a> theme. Icons come from the great <a href="https://fontawesome.com/license" target="_blank" rel="external">Font Awesome</a> library</p>
+      <p></p>
+    </div>
+  </footer>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:500,600|Raleway:400,400i,600" rel="stylesheet">
+  
+</body>
+</html>
