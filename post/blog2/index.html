@@ -1,26 +1,24 @@
 <!DOCTYPE html>
-<html lang='en'><head>
-  <title>STL学习笔记1——初识STL - My New Hugo Site</title>
-  <link rel='canonical' href='https://jzhou1997.github.io/post/blog2/' />
-  <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1' />
-  <meta name='description' content='' />
-  <meta name='theme-color' content='black' />
-  
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://jzhou1997.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://jzhou1997.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://jzhou1997.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://jzhou1997.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://jzhou1997.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://jzhou1997.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://jzhou1997.github.io/css/syntax.css' />
+    <title>STL学习笔记1——初识STL - My New Hugo Site</title>
+    
+    <link rel="icon" type="image/x-icon" href='https://jzhou1997.github.io/images/favicon.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
 
-  <meta name="generator" content="Hugo 0.80.0" />
-
-  
-
-
-
-
-
-<link rel="stylesheet" href="https://jzhou1997.github.io/sass/style.min.8a1658d134a4b54730b66789206b2cf14c1b006a6de3f3fde6302f925b6e01f5.css" integrity="sha256-ihZY0TSktUcwtmeJIGss8UwbAGpt4/P95jAvkltuAfU=" media="screen">
-<link rel="stylesheet" href="https://jzhou1997.github.io/syntax.min.css" integrity="" media="screen">
-
-  <meta property="og:title" content="STL学习笔记1——初识STL" />
-<meta property="og:description" content="STL学习笔记1——初识STL STL的诞生 ​	长久以来，软件界一直希望建立可重复利用的东西。C&#43;&#43;的面向对象（封装、继承、多态）和泛型编程（模板）思想，目的就是复用性的提升，为了建立数据结构和算法的一套标准，并降低他们之间的耦合，这就诞生了STL。
+    
+    <meta name="description"
+  content="STL学习笔记1——初识STL STL的诞生 ​	长久以来，软件界一直希望建立可重复利用的东西。C&#43;&#43;的面向对象（封装、继承、多态）和泛型编程（模板）思想，目的就是复用性的提升，为了建立数据结构和算法的一套标准，并降低他们之间的耦合，这就诞生了STL。
 STL基本概念 ​
 ​	STL（Standard Template Library 标准模板库），几乎所有的代码都采用了模板类或者模板函数，相比于传统的由函数和类组成的库来说提供了更好的代码重用机会，从广义上可以分成容器（container）、算法（algorithm）、迭代器（iterator）。容器和算法之间通过迭代器进行无缝连接。
 ​	六大组件：容器、算法、迭代器、仿函数、适配器、空间配置器：
@@ -28,14 +26,35 @@ STL基本概念 ​
 STL中容器、算法、迭代器 ​	容器：将运用最广泛的一些数据结构实现出来，常见的数据结构有array、list、tree、stack、queue、set、map，根据数据在容器中的排列顺序，可以分成序列式容器和关联式容器。 序列式容器：强调值的排序，容器中每个元素有固定的位置 关联式容器：二叉树结构，元素间没有严格的物理上的顺序关系
 ​	算法：解决问题的方法，以有限的步骤，解决逻辑或数学上的问题。 质变算法：运算过程中会更改区间内的元素的内容。如拷贝、替换 非质变算法：运算过程中不会更改区间内的元素的内容。如查找、遍历
 ​	迭代器：容器和算法之间粘合剂。算法要通过迭代器才能访问容器中的元素，STL的中心思想在于将容器(container)和算法(algorithms)分开，彼此独立设计，最后再一贴胶着剂将他们撮合在一起。每个容器都有自己专属的迭代器 ，有点类似于指针。迭代器的种类如下：
-简单示例 #include&lt;iostream&gt;#include&lt;vector&gt;#include&lt;algorithm&gt;using namespace std; //迭代器示例 存放基础数据类型 void Print(int tmp) { cout &lt;&lt; tmp &lt;&lt; endl; } void test01() { //创建一个vector容器 vector&lt;int&gt; v; //向vector容器插入数据 v.push_back(2); v.push_back(4); v.push_back(6); v.push_back(8); //起始迭代器，返回容器中的第一个元素 vector&lt;int&gt;::iterator Vstart = v.begin(); //结束迭代器，返回容器中的最后一个元素的下一个位置 vector&lt;int&gt;::iterator Vend = v." />
+简单示例 #include&amp;lt;iostream&amp;gt;#include&amp;lt;vector&amp;gt;#include&amp;lt;algorithm&amp;gt;using namespace std; //迭代器示例 存放基础数据类型 void Print(int tmp) { cout &amp;lt;&amp;lt; tmp &amp;lt;&amp;lt; endl; } void test01() { //创建一个vector容器 vector&amp;lt;int&amp;gt; v; //向vector容器插入数据 v.push_back(2); v.push_back(4); v.push_back(6); v.push_back(8); //起始迭代器，返回容器中的第一个元素 vector&amp;lt;int&amp;gt;::iterator Vstart = v.begin(); //结束迭代器，返回容器中的最后一个元素的下一个位置 vector&amp;lt;int&amp;gt;::iterator Vend = v." />
+<meta name="keywords"
+  content='' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://jzhou1997.github.io/post/blog2/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="STL学习笔记1——初识STL - My New Hugo Site" />
+<meta name="twitter:description"
+  content="STL学习笔记1——初识STL STL的诞生 ​	长久以来，软件界一直希望建立可重复利用的东西。C&#43;&#43;的面向对象（封装、继承、多态）和泛型编程（模板）思想，目的就是复用性的提升，为了建立数据结构和算法的一套标准，并降低他们之间的耦合，这就诞生了STL。
+STL基本概念 ​
+​	STL（Standard Template Library 标准模板库），几乎所有的代码都采用了模板类或者模板函数，相比于传统的由函数和类组成的库来说提供了更好的代码重用机会，从广义上可以分成容器（container）、算法（algorithm）、迭代器（iterator）。容器和算法之间通过迭代器进行无缝连接。
+​	六大组件：容器、算法、迭代器、仿函数、适配器、空间配置器：
+ 容器：各种数据结构，如vector、list、deque、set、map等,用来存放数据。 算法：各种常用的算法，如sort、find、copy、for_each等 迭代器：扮演了容器与算法之间的胶合剂，所有STL容器都附带有自己专属的迭代器。 仿函数：行为类似函数，可作为算法的某种策略。 适配器：一种用来修饰容器或者仿函数或迭代器接口的东西。 空间配置器：负责空间的配置与管理，实现动态空间配置、空间管理、空间释放  ​ 六大组件之间的关系，容器通过空间配置器获得数据存储空间，算法通过迭代器存储容器中的内容，仿函 数可以协助算法完成不同的策略的变化，适配器可以修饰仿函数。
+STL中容器、算法、迭代器 ​	容器：将运用最广泛的一些数据结构实现出来，常见的数据结构有array、list、tree、stack、queue、set、map，根据数据在容器中的排列顺序，可以分成序列式容器和关联式容器。 序列式容器：强调值的排序，容器中每个元素有固定的位置 关联式容器：二叉树结构，元素间没有严格的物理上的顺序关系
+​	算法：解决问题的方法，以有限的步骤，解决逻辑或数学上的问题。 质变算法：运算过程中会更改区间内的元素的内容。如拷贝、替换 非质变算法：运算过程中不会更改区间内的元素的内容。如查找、遍历
+​	迭代器：容器和算法之间粘合剂。算法要通过迭代器才能访问容器中的元素，STL的中心思想在于将容器(container)和算法(algorithms)分开，彼此独立设计，最后再一贴胶着剂将他们撮合在一起。每个容器都有自己专属的迭代器 ，有点类似于指针。迭代器的种类如下：
+简单示例 #include&amp;lt;iostream&amp;gt;#include&amp;lt;vector&amp;gt;#include&amp;lt;algorithm&amp;gt;using namespace std; //迭代器示例 存放基础数据类型 void Print(int tmp) { cout &amp;lt;&amp;lt; tmp &amp;lt;&amp;lt; endl; } void test01() { //创建一个vector容器 vector&amp;lt;int&amp;gt; v; //向vector容器插入数据 v.push_back(2); v.push_back(4); v.push_back(6); v.push_back(8); //起始迭代器，返回容器中的第一个元素 vector&amp;lt;int&amp;gt;::iterator Vstart = v.begin(); //结束迭代器，返回容器中的最后一个元素的下一个位置 vector&amp;lt;int&amp;gt;::iterator Vend = v." />
+<meta name="twitter:site" content="https://jzhou1997.github.io" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://jzhou1997.github.io">
+
+
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jzhou1997.github.io/post/blog2/" />
-<meta property="article:published_time" content="2021-03-18T00:25:58+08:00" />
-<meta property="article:modified_time" content="2021-03-18T00:25:58+08:00" />
-
-  <meta itemprop="name" content="STL学习笔记1——初识STL">
-<meta itemprop="description" content="STL学习笔记1——初识STL STL的诞生 ​	长久以来，软件界一直希望建立可重复利用的东西。C&#43;&#43;的面向对象（封装、继承、多态）和泛型编程（模板）思想，目的就是复用性的提升，为了建立数据结构和算法的一套标准，并降低他们之间的耦合，这就诞生了STL。
+<meta property="og:title" content="STL学习笔记1——初识STL - My New Hugo Site">
+<meta property="og:description"
+  content="STL学习笔记1——初识STL STL的诞生 ​	长久以来，软件界一直希望建立可重复利用的东西。C&#43;&#43;的面向对象（封装、继承、多态）和泛型编程（模板）思想，目的就是复用性的提升，为了建立数据结构和算法的一套标准，并降低他们之间的耦合，这就诞生了STL。
 STL基本概念 ​
 ​	STL（Standard Template Library 标准模板库），几乎所有的代码都采用了模板类或者模板函数，相比于传统的由函数和类组成的库来说提供了更好的代码重用机会，从广义上可以分成容器（container）、算法（algorithm）、迭代器（iterator）。容器和算法之间通过迭代器进行无缝连接。
 ​	六大组件：容器、算法、迭代器、仿函数、适配器、空间配置器：
@@ -43,75 +62,146 @@ STL基本概念 ​
 STL中容器、算法、迭代器 ​	容器：将运用最广泛的一些数据结构实现出来，常见的数据结构有array、list、tree、stack、queue、set、map，根据数据在容器中的排列顺序，可以分成序列式容器和关联式容器。 序列式容器：强调值的排序，容器中每个元素有固定的位置 关联式容器：二叉树结构，元素间没有严格的物理上的顺序关系
 ​	算法：解决问题的方法，以有限的步骤，解决逻辑或数学上的问题。 质变算法：运算过程中会更改区间内的元素的内容。如拷贝、替换 非质变算法：运算过程中不会更改区间内的元素的内容。如查找、遍历
 ​	迭代器：容器和算法之间粘合剂。算法要通过迭代器才能访问容器中的元素，STL的中心思想在于将容器(container)和算法(algorithms)分开，彼此独立设计，最后再一贴胶着剂将他们撮合在一起。每个容器都有自己专属的迭代器 ，有点类似于指针。迭代器的种类如下：
-简单示例 #include&lt;iostream&gt;#include&lt;vector&gt;#include&lt;algorithm&gt;using namespace std; //迭代器示例 存放基础数据类型 void Print(int tmp) { cout &lt;&lt; tmp &lt;&lt; endl; } void test01() { //创建一个vector容器 vector&lt;int&gt; v; //向vector容器插入数据 v.push_back(2); v.push_back(4); v.push_back(6); v.push_back(8); //起始迭代器，返回容器中的第一个元素 vector&lt;int&gt;::iterator Vstart = v.begin(); //结束迭代器，返回容器中的最后一个元素的下一个位置 vector&lt;int&gt;::iterator Vend = v.">
-<meta itemprop="datePublished" content="2021-03-18T00:25:58+08:00" />
-<meta itemprop="dateModified" content="2021-03-18T00:25:58+08:00" />
-<meta itemprop="wordCount" content="308">
+简单示例 #include&amp;lt;iostream&amp;gt;#include&amp;lt;vector&amp;gt;#include&amp;lt;algorithm&amp;gt;using namespace std; //迭代器示例 存放基础数据类型 void Print(int tmp) { cout &amp;lt;&amp;lt; tmp &amp;lt;&amp;lt; endl; } void test01() { //创建一个vector容器 vector&amp;lt;int&amp;gt; v; //向vector容器插入数据 v.push_back(2); v.push_back(4); v.push_back(6); v.push_back(8); //起始迭代器，返回容器中的第一个元素 vector&amp;lt;int&amp;gt;::iterator Vstart = v.begin(); //结束迭代器，返回容器中的最后一个元素的下一个位置 vector&amp;lt;int&amp;gt;::iterator Vend = v." />
+<meta property="og:url" content="https://jzhou1997.github.io/post/blog2/" />
+<meta property="og:site_name" content="STL学习笔记1——初识STL" />
+<meta property="og:image"
+  content="https://jzhou1997.github.io">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2021-03-18 00:25:58 &#43;0800 CST" />
 
 
 
-<meta itemprop="keywords" content="" />
+
+
+
+
+
+
 
 </head>
+
 <body>
-
-  <header style="background-image:linear-gradient(
-      rgba(0,0,0,0.4),rgba(0,0,0,0.4)
-    ),url(&#39;https://jzhou1997.github.io/images/default-sidebar.jpg&#39;)">
-
-  <div class="intro">
-    <div class="logo-container">
-      <a href="/">
-        <img src='https://jzhou1997.github.io/images/edna-west.jpg' alt="Profile Linux下搭建hugo博客" class="rounded-logo">
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://jzhou1997.github.io">
+        <svg class="octicon" height="32" viewBox="0 0 16 16" version="1.1" width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
       </a>
     </div>
-    <h2>Welcome, I'm JZhou_1997</h2>
-    <h3>This is my personal website</h3>
-    <div class="menu">
-      
-
-      
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd"
+            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:https://jzhou1997.github.io">
+            </label>
+          </form>
+        </div>
+      </div>
     </div>
 
-  </div>
-
-  <div class="socials">
-      
-  </div>
-
-</header>
-
-
-  <div class="content-wrapper">
-    
-    <main id="content" class="post">
-
-<h1>STL学习笔记1——初识STL</h1>
-<div class="reading-time">
-  <div class="icon">
-  <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
-  
-  <path d="M57.5 11C29.05 11 6 34.05 6 62.5S29.05 114 57.5 114 109 90.95 109 62.5 85.95 11 57.5 11zm0 93.032c-22.947 0-41.532-18.585-41.532-41.532 0-22.947 18.585-41.532 41.532-41.532 22.947 0 41.532 18.585 41.532 41.532 0 22.947-18.585 41.532-41.532 41.532zm12.833-21.68L52.703 69.54a2.508 2.508 0 0 1-1.018-2.015V33.427a2.5 2.5 0 0 1 2.492-2.492h6.646a2.5 2.5 0 0 1 2.492 2.492v29.426l13.871 10.092c1.122.81 1.35 2.368.54 3.49l-3.904 5.377a2.51 2.51 0 0 1-3.489.54z"/>
-  
-  </svg>
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://jzhou1997.github.io">
+        <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+          width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
 </div>
-
-  <span>2 minutes</span>
-</div>
-
-<div class="published-date">
-  <div class="icon">
-  <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
   
-  <path d="M77.577 51.23a1.807 1.807 0 0 0-2.2.342l-27.562 27.79a1.807 1.807 0 0 1-2.2.342l-14.008-9.702a1.807 1.807 0 0 0-2.2.342l-1.952 1.968c-.287.22-.456.568-.455.936.001.37.172.716.46.934L45.637 86.77a1.807 1.807 0 0 0 2.2-.342l31.709-31.97c.287-.22.456-.567.455-.936a1.175 1.175 0 0 0-.46-.933l-1.963-1.36z"/><path d="M97.304 20H80.512c-.041.34-.063.683-.064 1.026a5.986 5.986 0 0 0 1.256 4.1c.054.003.103.02.157.025a4.881 4.881 0 0 1 1.865-.025c3.05.562 4.984 3.907 4.32 7.47-.666 3.563-3.678 5.996-6.728 5.433a4.932 4.932 0 0 1-2.437-1.258c-6.018-1.378-10.445-7.795-10.445-15.745 0-.347.023-.685.04-1.026H34.579c-.041.34-.063.683-.064 1.026a5.986 5.986 0 0 0 1.256 4.1c.054.003.103.02.157.025a4.881 4.881 0 0 1 1.865-.025c3.05.562 4.984 3.907 4.32 7.47-.666 3.563-3.678 5.996-6.728 5.433a4.932 4.932 0 0 1-2.437-1.258c-6.018-1.378-10.445-7.795-10.445-15.745 0-.22.019-.434.025-.652a9.788 9.788 0 0 0-5.697 4.471 9.683 9.683 0 0 0-2.65 4.764L1.158 92.871c-.965 4.689 2.6 8.503 7.948 8.503h6.334v2.673c-.077 5.41 4.263 9.861 9.705 9.953h72.16c5.438-.095 9.774-4.546 9.694-9.953V29.953c.08-5.407-4.256-9.858-9.695-9.953zM10.078 96.653c-2.378 0-3.964-1.697-3.535-3.782L16.637 43.84h80.787L87.331 92.871a5.254 5.254 0 0 1-5.091 3.782H10.078zm91.535 7.394c.036 2.403-1.891 4.382-4.308 4.424h-72.16c-2.42-.04-4.352-2.018-4.32-4.424v-2.673h60.443c5.348 0 10.484-3.814 11.449-8.503l8.897-43.215v54.391z"/><path d="M34.814 33c1.243 0 2.251-1.057 2.251-2.36 0-1.305-1.008-2.362-2.25-2.362-2.04 0-4.313-3.194-4.313-7.778s2.272-7.778 4.312-7.778c1.227 0 2.536 1.163 3.386 3.084H43C41.716 11.19 38.578 8 34.814 8 29.871 8 26 13.49 26 20.5c0 7.009 3.871 12.5 8.814 12.5z"/>
-  
-  </svg>
-</div>
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://jzhou1997.github.io">
+                  <img class=" avatar-user"
+                    src="https://jzhou1997.github.io/images/avatar.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://jzhou1997.github.io"></a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://jzhou1997.github.io/post/blog2/">STL学习笔记1——初识STL</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Thu, 18 Mar 2021 00:25:58 &#43;0800"
+                    class="no-wrap">
+                    Thu, 18 Mar 2021 00:25:58 &#43;0800</relative-time>
 
-  <span>March 18, 2021</span>
-</div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<h1 id="stl学习笔记1初识stl">STL学习笔记1——初识STL</h1>
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div class="file-header d-flex flex-md-items-center flex-items-start">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    1514 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5">
+                <article class="markdown-body entry-content container-lg"><h1 id="stl学习笔记1初识stl">STL学习笔记1——初识STL</h1>
 <h2 id="stl的诞生">STL的诞生</h2>
 <p>​			长久以来，软件界一直希望建立可重复利用的东西。C++的面向对象（封装、继承、多态）和泛型编程（模板）思想，目的就是复用性的提升，为了建立数据结构和算法的一套标准，并降低他们之间的耦合，这就诞生了STL。</p>
 <h2 id="stl基本概念">STL基本概念</h2>
@@ -266,17 +356,42 @@ v.push_back(<span style="color:#ae81ff">8</span>);
 	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
 
-</code></pre></div>
-
-    </main>
-  </div>
-  <footer>
-    <div class="footer-wrapper">
-      <p>Made with ❤️ &mdash; Powered by <a href="https://gohugo.io/" target="_blank" rel="external">Hugo</a> and the <a href="https://github.com/bjacquemet/personal-web" target='_blank' rel="external">Personal Web</a> theme. Icons come from the great <a href="https://fontawesome.com/license" target="_blank" rel="external">Font Awesome</a> library</p>
-      <p></p>
+</code></pre></div></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </footer>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:500,600|Raleway:400,400i,600" rel="stylesheet">
-  
+  </main>
+</div>
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://jzhou1997.github.io">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
 </body>
+
+<script type="application/javascript" src="https://jzhou1997.github.io/js/github-style.js"></script>
+
+
+
 </html>
