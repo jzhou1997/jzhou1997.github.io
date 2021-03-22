@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">2</span>
+              <span class="Counter">3</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -385,7 +385,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">2</span>
+      <span class="Counter ">3</span>
     </a>
   </nav>
 </div>
@@ -397,6 +397,34 @@
     <div>
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://jzhou1997.github.io/post/blog3/">STL常用容器——string容器</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                STL常用容器——string容器 0.string容器基本概率 ​	string是c++风格的字符串，本质是一个类，定义在头文件中。 ​	与c风格的字符串不同的是：char是一个指针，而string是一个类，类中封装了char，管理这个字符串，是一个char的容器。 ​	string类的内部封装了许多成员方法，如find、copy、delete、replace、insert。string管理char所分配的内存，使用string类时不用担心复制和取值越界的问题，这些都由string类负责维护。
+1.string容器的构造函数 ​	string();	//创建一个空的字符串 例如: string str; ​	string(const char* s);	//使用字符串s初始化 ​	string(const string&amp; str);	//使用一个string对象初始化另一个string对象 ​	string(int n, char c);	//使用n个字符c初始化
+#include&lt;iostream&gt;#include&lt;string&gt;using namespace std; void test01() { //创建一个空字符串 	string s1; //使用字符串s初始化 	const char* s = &#34;hello world!&#34;; string s2(s); cout &lt;&lt; s2 &lt;&lt; endl; //使用一个string对象初始化 	string s3(s2); cout &lt;&lt; s3 &lt;&lt; endl; //使用n个字符初始化 	string s4(7, &#39;c&#39;); cout &lt;&lt; s4 &lt;&lt; endl; } int main() { test01(); return 0; } 2.
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+
+              Created
+              <relative-time datetime=" Mon, 22 Mar 2021 21:09:08 &#43;0800" class="no-wrap"
+                title=" Mon, 22 Mar 2021 21:09:08 &#43;0800">
+                Mon, 22 Mar 2021 21:09:08 &#43;0800
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">

@@ -6,7 +6,18 @@
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Mar 2021 00:25:58 +0800</lastBuildDate><atom:link href="https://jzhou1997.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Mar 2021 21:09:08 +0800</lastBuildDate><atom:link href="https://jzhou1997.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>STL常用容器——string容器</title>
+      <link>https://jzhou1997.github.io/post/blog3/</link>
+      <pubDate>Mon, 22 Mar 2021 21:09:08 +0800</pubDate>
+      
+      <guid>https://jzhou1997.github.io/post/blog3/</guid>
+      <description>STL常用容器——string容器 0.string容器基本概率 ​	string是c++风格的字符串，本质是一个类，定义在头文件中。 ​	与c风格的字符串不同的是：char是一个指针，而string是一个类，类中封装了char，管理这个字符串，是一个char的容器。 ​	string类的内部封装了许多成员方法，如find、copy、delete、replace、insert。string管理char所分配的内存，使用string类时不用担心复制和取值越界的问题，这些都由string类负责维护。
+1.string容器的构造函数 ​	string();	//创建一个空的字符串 例如: string str; ​	string(const char* s);	//使用字符串s初始化 ​	string(const string&amp;amp; str);	//使用一个string对象初始化另一个string对象 ​	string(int n, char c);	//使用n个字符c初始化
+#include&amp;lt;iostream&amp;gt;#include&amp;lt;string&amp;gt;using namespace std; void test01() { //创建一个空字符串 	string s1; //使用字符串s初始化 	const char* s = &amp;#34;hello world!&amp;#34;; string s2(s); cout &amp;lt;&amp;lt; s2 &amp;lt;&amp;lt; endl; //使用一个string对象初始化 	string s3(s2); cout &amp;lt;&amp;lt; s3 &amp;lt;&amp;lt; endl; //使用n个字符初始化 	string s4(7, &amp;#39;c&amp;#39;); cout &amp;lt;&amp;lt; s4 &amp;lt;&amp;lt; endl; } int main() { test01(); return 0; } 2.</description>
+    </item>
+    
     <item>
       <title>STL学习笔记1——初识STL</title>
       <link>https://jzhou1997.github.io/post/blog2/</link>

@@ -155,7 +155,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">2</span>
+              <span class="Counter">3</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -386,7 +386,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">2</span>
+      <span class="Counter ">3</span>
     </a>
   </nav>
 </div>
@@ -410,6 +410,36 @@
           Popular posts
         </h2>
         <ol class="d-flex flex-wrap list-style-none gutter-condensed mb-4 js-pinned-items-reorder-list">
+          
+          <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
+            <div
+              class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source reorderable sortable-button-item">
+              <div class="pinned-item-list-item-content">
+                <div class="d-flex width-full flex-items-center position-relative">
+                  <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 16 16" version="1.1"
+                    width="16" height="16">
+                    <path fill-rule="evenodd"
+                      d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                    </path>
+                  </svg>
+                  <a class="text-bold flex-auto min-width-0" href="https://jzhou1997.github.io/post/blog3/">
+                    <span class="repo" title="STL常用容器——string容器">STL常用容器——string容器</span>
+                  </a>
+                </div>
+
+
+                <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
+                  STL常用容器——string容器 0.string容器基本概率 ​	string是c++风格的字符串，本质是一个类，定义在头文件中。 ​	与c风格的字符串不同的是：char是一个指针，而string是一个类，类中封装了char，管理这个字符串，是一个char的容器。 ​	string类的内部封装了许多成员方法，如find、copy、delete、replace、insert。string管理char所分配的内存，使用string类时不用担心复制和取值越界的问题，这些都由string类负责维护。
+1.string容器的构造函数 ​	string();	//创建一个空的字符串 例如: string str; ​	string(const char* s);	//使用字符串s初始化 ​	string(const string&amp; str);	//使用一个string对象初始化另一个string对象 ​	string(int n, char c);	//使用n个字符c初始化
+#include&lt;iostream&gt;#include&lt;string&gt;using namespace std; void test01() { //创建一个空字符串 	string s1; //使用字符串s初始化 	const char* s = &#34;hello world!&#34;; string s2(s); cout &lt;&lt; s2 &lt;&lt; endl; //使用一个string对象初始化 	string s3(s2); cout &lt;&lt; s3 &lt;&lt; endl; //使用n个字符初始化 	string s4(7, &#39;c&#39;); cout &lt;&lt; s4 &lt;&lt; endl; } int main() { test01(); return 0; } 2.
+                </div>
+
+                <p class="mb-0 f6 text-gray">
+                  
+                </p>
+              </div>
+            </div>
+          </li>
           
           <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
             <div
@@ -486,6 +516,12 @@ Congratulations! Your new Hugo site is created in /home/jzhou/桌面/jzhou_blog.
 
     
     <div class="mt-4 position-relative" id="contributions" data='[
+{
+  "title": "STL%e5%b8%b8%e7%94%a8%e5%ae%b9%e5%99%a8%e2%80%94%e2%80%94string%e5%ae%b9%e5%99%a8",
+  "link": "https://jzhou1997.github.io/post/blog3/",
+  "publishDate": "2021-03-22%2021:09:08"
+},
+
 {
   "title": "STL%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b01%e2%80%94%e2%80%94%e5%88%9d%e8%af%86STL",
   "link": "https://jzhou1997.github.io/post/blog2/",
