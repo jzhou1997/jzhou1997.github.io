@@ -155,7 +155,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">3</span>
+              <span class="Counter">4</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -386,7 +386,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">3</span>
+      <span class="Counter ">4</span>
     </a>
   </nav>
 </div>
@@ -410,6 +410,40 @@
           Popular posts
         </h2>
         <ol class="d-flex flex-wrap list-style-none gutter-condensed mb-4 js-pinned-items-reorder-list">
+          
+          <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
+            <div
+              class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source reorderable sortable-button-item">
+              <div class="pinned-item-list-item-content">
+                <div class="d-flex width-full flex-items-center position-relative">
+                  <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 16 16" version="1.1"
+                    width="16" height="16">
+                    <path fill-rule="evenodd"
+                      d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                    </path>
+                  </svg>
+                  <a class="text-bold flex-auto min-width-0" href="https://jzhou1997.github.io/post/blog4/">
+                    <span class="repo" title="memset初始化原理">memset初始化原理</span>
+                  </a>
+                </div>
+
+
+                <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
+                  memset初始化原理 问题 ​	今天刷力扣的时候，想着使用memset初始化比循环更快，于是使用memset对数组赋予初值1，但在测试时始终不对，在本地输出初始化后数组的值，发现数组的值变成了很奇怪的一个数字——&ldquo;16843009&rdquo;。
+#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;vector&gt;using namespace std; int main() { int a[6]; memset(a, 1, sizeof(a)); for (int i : a) { cout &lt;&lt; i &lt;&lt; &#34; &#34;; } return 0; } ​	因为在这之前我使用memset均是初始化为0，没有遇到什么问题，我又试着重新赋值为0和-1，都是正常的，抱着一探究竟的想法，我查了查memset的函数实现。
+工作原理 void * memset(void *_Dst,int _Val,size_t _Size); ​	这是memset的函数声明，使用memset比循环快就是因为memset是对内存进行操作，但是memset是按字节（byte）进行复制。在函数声明中，第一个参数为需要初始化的首地址；第二个参数是初始化的值，但并不是直接将int值赋给数组单元，因为一个int占4个字节；第三个参数是初始化首地址后多少个字节，注意，是字节为单位，不是多少个数组单元。 ​	memset是截取第二个参数的二进制形式的最后一个字节（8位），复制给首地址后的n个字节，n为第三个参数。
+示例 0 ​	首先在常见的初始化0的情况下，一个int类型的0，占4个字节即32bit，0的二进制码为00000000 00000000 00000000 00000000，在初始化过程中，将最后一个字节的8位0依次复制给首地址后的n个字节，而4个字节为1个int，刚好也为0，所以不会出错。
+-1 ​	对于-1，-1的二进制原码为10000000 00000000 00000000 00000001，但负数应该用补码表示，即11111111 11111111 11111111 11111111，最后一个字节为11111111，在初始化后得到的新的int值也为-1。
+1 ​	对于1，1的二进制为00000000 00000000 00000000 00000001，取最后一字节进行复制，得到新的值为00000001 00000001 00000001 00000001，就是开头所得到的16843009。
+​	正是因为memset是按字节进行复制的，所以对于int类型的数据，只有0和-1恰巧可以，而一个char字符占一个字节，所以用一个char字符初始化一个char数组，最终每个字符都和设定的字符相同。
+                </div>
+
+                <p class="mb-0 f6 text-gray">
+                  
+                </p>
+              </div>
+            </div>
+          </li>
           
           <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
             <div
@@ -516,6 +550,12 @@ Congratulations! Your new Hugo site is created in /home/jzhou/桌面/jzhou_blog.
 
     
     <div class="mt-4 position-relative" id="contributions" data='[
+{
+  "title": "memset%e5%88%9d%e5%a7%8b%e5%8c%96%e5%8e%9f%e7%90%86",
+  "link": "https://jzhou1997.github.io/post/blog4/",
+  "publishDate": "2021-04-23%2021:37:38"
+},
+
 {
   "title": "STL%e5%b8%b8%e7%94%a8%e5%ae%b9%e5%99%a8%e2%80%94%e2%80%94string%e5%ae%b9%e5%99%a8",
   "link": "https://jzhou1997.github.io/post/blog3/",
