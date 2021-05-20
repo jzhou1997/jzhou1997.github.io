@@ -18,13 +18,7 @@
 
     
     <meta name="description"
-  content="memset初始化原理 问题 ​	今天刷力扣的时候，想着使用memset初始化比循环更快，于是使用memset对数组赋予初值1，但在测试时始终不对，在本地输出初始化后数组的值，发现数组的值变成了很奇怪的一个数字——&amp;ldquo;16843009&amp;rdquo;。
-#include&amp;lt;iostream&amp;gt;#include&amp;lt;algorithm&amp;gt;#include&amp;lt;vector&amp;gt;using namespace std; int main() { int a[6]; memset(a, 1, sizeof(a)); for (int i : a) { cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;#34; &amp;#34;; } return 0; } ​	因为在这之前我使用memset均是初始化为0，没有遇到什么问题，我又试着重新赋值为0和-1，都是正常的，抱着一探究竟的想法，我查了查memset的函数实现。
-工作原理 void * memset(void *_Dst,int _Val,size_t _Size); ​	这是memset的函数声明，使用memset比循环快就是因为memset是对内存进行操作，但是memset是按字节（byte）进行复制。在函数声明中，第一个参数为需要初始化的首地址；第二个参数是初始化的值，但并不是直接将int值赋给数组单元，因为一个int占4个字节；第三个参数是初始化首地址后多少个字节，注意，是字节为单位，不是多少个数组单元。 ​	memset是截取第二个参数的二进制形式的最后一个字节（8位），复制给首地址后的n个字节，n为第三个参数。
-示例 0 ​	首先在常见的初始化0的情况下，一个int类型的0，占4个字节即32bit，0的二进制码为00000000 00000000 00000000 00000000，在初始化过程中，将最后一个字节的8位0依次复制给首地址后的n个字节，而4个字节为1个int，刚好也为0，所以不会出错。
--1 ​	对于-1，-1的二进制原码为10000000 00000000 00000000 00000001，但负数应该用补码表示，即11111111 11111111 11111111 11111111，最后一个字节为11111111，在初始化后得到的新的int值也为-1。
-1 ​	对于1，1的二进制为00000000 00000000 00000000 00000001，取最后一字节进行复制，得到新的值为00000001 00000001 00000001 00000001，就是开头所得到的16843009。
-​	正是因为memset是按字节进行复制的，所以对于int类型的数据，只有0和-1恰巧可以，而一个char字符占一个字节，所以用一个char字符初始化一个char数组，最终每个字符都和设定的字符相同。" />
+  content="今天刷力扣的时候，想着使用memset初始化比循环更快，于是使用memset对数组赋予初值1，但在测试时始终不对，在本地输出初始化后数组的值，发现数组的值变成了很奇怪的一个数字——16843009" />
 <meta name="keywords"
   content='' />
 <meta name="robots" content="noodp" />
@@ -34,13 +28,7 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="memset初始化原理 - My New Hugo Site" />
 <meta name="twitter:description"
-  content="memset初始化原理 问题 ​	今天刷力扣的时候，想着使用memset初始化比循环更快，于是使用memset对数组赋予初值1，但在测试时始终不对，在本地输出初始化后数组的值，发现数组的值变成了很奇怪的一个数字——&amp;ldquo;16843009&amp;rdquo;。
-#include&amp;lt;iostream&amp;gt;#include&amp;lt;algorithm&amp;gt;#include&amp;lt;vector&amp;gt;using namespace std; int main() { int a[6]; memset(a, 1, sizeof(a)); for (int i : a) { cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;#34; &amp;#34;; } return 0; } ​	因为在这之前我使用memset均是初始化为0，没有遇到什么问题，我又试着重新赋值为0和-1，都是正常的，抱着一探究竟的想法，我查了查memset的函数实现。
-工作原理 void * memset(void *_Dst,int _Val,size_t _Size); ​	这是memset的函数声明，使用memset比循环快就是因为memset是对内存进行操作，但是memset是按字节（byte）进行复制。在函数声明中，第一个参数为需要初始化的首地址；第二个参数是初始化的值，但并不是直接将int值赋给数组单元，因为一个int占4个字节；第三个参数是初始化首地址后多少个字节，注意，是字节为单位，不是多少个数组单元。 ​	memset是截取第二个参数的二进制形式的最后一个字节（8位），复制给首地址后的n个字节，n为第三个参数。
-示例 0 ​	首先在常见的初始化0的情况下，一个int类型的0，占4个字节即32bit，0的二进制码为00000000 00000000 00000000 00000000，在初始化过程中，将最后一个字节的8位0依次复制给首地址后的n个字节，而4个字节为1个int，刚好也为0，所以不会出错。
--1 ​	对于-1，-1的二进制原码为10000000 00000000 00000000 00000001，但负数应该用补码表示，即11111111 11111111 11111111 11111111，最后一个字节为11111111，在初始化后得到的新的int值也为-1。
-1 ​	对于1，1的二进制为00000000 00000000 00000000 00000001，取最后一字节进行复制，得到新的值为00000001 00000001 00000001 00000001，就是开头所得到的16843009。
-​	正是因为memset是按字节进行复制的，所以对于int类型的数据，只有0和-1恰巧可以，而一个char字符占一个字节，所以用一个char字符初始化一个char数组，最终每个字符都和设定的字符相同。" />
+  content="今天刷力扣的时候，想着使用memset初始化比循环更快，于是使用memset对数组赋予初值1，但在测试时始终不对，在本地输出初始化后数组的值，发现数组的值变成了很奇怪的一个数字——16843009" />
 <meta name="twitter:site" content="https://jzhou1997.github.io" />
 <meta name="twitter:creator" content="" />
 <meta name="twitter:image"
@@ -50,13 +38,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:title" content="memset初始化原理 - My New Hugo Site">
 <meta property="og:description"
-  content="memset初始化原理 问题 ​	今天刷力扣的时候，想着使用memset初始化比循环更快，于是使用memset对数组赋予初值1，但在测试时始终不对，在本地输出初始化后数组的值，发现数组的值变成了很奇怪的一个数字——&amp;ldquo;16843009&amp;rdquo;。
-#include&amp;lt;iostream&amp;gt;#include&amp;lt;algorithm&amp;gt;#include&amp;lt;vector&amp;gt;using namespace std; int main() { int a[6]; memset(a, 1, sizeof(a)); for (int i : a) { cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &amp;#34; &amp;#34;; } return 0; } ​	因为在这之前我使用memset均是初始化为0，没有遇到什么问题，我又试着重新赋值为0和-1，都是正常的，抱着一探究竟的想法，我查了查memset的函数实现。
-工作原理 void * memset(void *_Dst,int _Val,size_t _Size); ​	这是memset的函数声明，使用memset比循环快就是因为memset是对内存进行操作，但是memset是按字节（byte）进行复制。在函数声明中，第一个参数为需要初始化的首地址；第二个参数是初始化的值，但并不是直接将int值赋给数组单元，因为一个int占4个字节；第三个参数是初始化首地址后多少个字节，注意，是字节为单位，不是多少个数组单元。 ​	memset是截取第二个参数的二进制形式的最后一个字节（8位），复制给首地址后的n个字节，n为第三个参数。
-示例 0 ​	首先在常见的初始化0的情况下，一个int类型的0，占4个字节即32bit，0的二进制码为00000000 00000000 00000000 00000000，在初始化过程中，将最后一个字节的8位0依次复制给首地址后的n个字节，而4个字节为1个int，刚好也为0，所以不会出错。
--1 ​	对于-1，-1的二进制原码为10000000 00000000 00000000 00000001，但负数应该用补码表示，即11111111 11111111 11111111 11111111，最后一个字节为11111111，在初始化后得到的新的int值也为-1。
-1 ​	对于1，1的二进制为00000000 00000000 00000000 00000001，取最后一字节进行复制，得到新的值为00000001 00000001 00000001 00000001，就是开头所得到的16843009。
-​	正是因为memset是按字节进行复制的，所以对于int类型的数据，只有0和-1恰巧可以，而一个char字符占一个字节，所以用一个char字符初始化一个char数组，最终每个字符都和设定的字符相同。" />
+  content="今天刷力扣的时候，想着使用memset初始化比循环更快，于是使用memset对数组赋予初值1，但在测试时始终不对，在本地输出初始化后数组的值，发现数组的值变成了很奇怪的一个数字——16843009" />
 <meta property="og:url" content="https://jzhou1997.github.io/post/blog4/" />
 <meta property="og:site_name" content="memset初始化原理" />
 <meta property="og:image"

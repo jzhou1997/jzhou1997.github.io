@@ -429,13 +429,7 @@
 
 
                 <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
-                  memset初始化原理 问题 ​	今天刷力扣的时候，想着使用memset初始化比循环更快，于是使用memset对数组赋予初值1，但在测试时始终不对，在本地输出初始化后数组的值，发现数组的值变成了很奇怪的一个数字——&ldquo;16843009&rdquo;。
-#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;vector&gt;using namespace std; int main() { int a[6]; memset(a, 1, sizeof(a)); for (int i : a) { cout &lt;&lt; i &lt;&lt; &#34; &#34;; } return 0; } ​	因为在这之前我使用memset均是初始化为0，没有遇到什么问题，我又试着重新赋值为0和-1，都是正常的，抱着一探究竟的想法，我查了查memset的函数实现。
-工作原理 void * memset(void *_Dst,int _Val,size_t _Size); ​	这是memset的函数声明，使用memset比循环快就是因为memset是对内存进行操作，但是memset是按字节（byte）进行复制。在函数声明中，第一个参数为需要初始化的首地址；第二个参数是初始化的值，但并不是直接将int值赋给数组单元，因为一个int占4个字节；第三个参数是初始化首地址后多少个字节，注意，是字节为单位，不是多少个数组单元。 ​	memset是截取第二个参数的二进制形式的最后一个字节（8位），复制给首地址后的n个字节，n为第三个参数。
-示例 0 ​	首先在常见的初始化0的情况下，一个int类型的0，占4个字节即32bit，0的二进制码为00000000 00000000 00000000 00000000，在初始化过程中，将最后一个字节的8位0依次复制给首地址后的n个字节，而4个字节为1个int，刚好也为0，所以不会出错。
--1 ​	对于-1，-1的二进制原码为10000000 00000000 00000000 00000001，但负数应该用补码表示，即11111111 11111111 11111111 11111111，最后一个字节为11111111，在初始化后得到的新的int值也为-1。
-1 ​	对于1，1的二进制为00000000 00000000 00000000 00000001，取最后一字节进行复制，得到新的值为00000001 00000001 00000001 00000001，就是开头所得到的16843009。
-​	正是因为memset是按字节进行复制的，所以对于int类型的数据，只有0和-1恰巧可以，而一个char字符占一个字节，所以用一个char字符初始化一个char数组，最终每个字符都和设定的字符相同。
+                  今天刷力扣的时候，想着使用memset初始化比循环更快，于是使用memset对数组赋予初值1，但在测试时始终不对，在本地输出初始化后数组的值，发现数组的值变成了很奇怪的一个数字——16843009
                 </div>
 
                 <p class="mb-0 f6 text-gray">
@@ -463,9 +457,7 @@
 
 
                 <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
-                  STL常用容器——string容器 0.string容器基本概率 ​	string是c++风格的字符串，本质是一个类，定义在头文件中。 ​	与c风格的字符串不同的是：char是一个指针，而string是一个类，类中封装了char，管理这个字符串，是一个char的容器。 ​	string类的内部封装了许多成员方法，如find、copy、delete、replace、insert。string管理char所分配的内存，使用string类时不用担心复制和取值越界的问题，这些都由string类负责维护。
-1.string容器的构造函数 ​	string();	//创建一个空的字符串 例如: string str; ​	string(const char* s);	//使用字符串s初始化 ​	string(const string&amp; str);	//使用一个string对象初始化另一个string对象 ​	string(int n, char c);	//使用n个字符c初始化
-#include&lt;iostream&gt;#include&lt;string&gt;using namespace std; void test01() { //创建一个空字符串 	string s1; //使用字符串s初始化 	const char* s = &#34;hello world!&#34;; string s2(s); cout &lt;&lt; s2 &lt;&lt; endl; //使用一个string对象初始化 	string s3(s2); cout &lt;&lt; s3 &lt;&lt; endl; //使用n个字符初始化 	string s4(7, &#39;c&#39;); cout &lt;&lt; s4 &lt;&lt; endl; } int main() { test01(); return 0; } 2.
+                  string容器是STL中一个比较常用的容器，tring是c++风格的字符串，本质是一个类，定义在头文件<!-- raw HTML omitted -->中。与c风格的字符串不同的是：char<em>是一个指针，而string是一个类，类中封装了char</em>，管理这个字符串，是一个char*的容器。
                 </div>
 
                 <p class="mb-0 f6 text-gray">
@@ -493,15 +485,7 @@
 
 
                 <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
-                  STL学习笔记1——初识STL STL的诞生 ​	长久以来，软件界一直希望建立可重复利用的东西。C++的面向对象（封装、继承、多态）和泛型编程（模板）思想，目的就是复用性的提升，为了建立数据结构和算法的一套标准，并降低他们之间的耦合，这就诞生了STL。
-STL基本概念 ​
-​	STL（Standard Template Library 标准模板库），几乎所有的代码都采用了模板类或者模板函数，相比于传统的由函数和类组成的库来说提供了更好的代码重用机会，从广义上可以分成容器（container）、算法（algorithm）、迭代器（iterator）。容器和算法之间通过迭代器进行无缝连接。
-​	六大组件：容器、算法、迭代器、仿函数、适配器、空间配置器：
- 容器：各种数据结构，如vector、list、deque、set、map等,用来存放数据。 算法：各种常用的算法，如sort、find、copy、for_each等 迭代器：扮演了容器与算法之间的胶合剂，所有STL容器都附带有自己专属的迭代器。 仿函数：行为类似函数，可作为算法的某种策略。 适配器：一种用来修饰容器或者仿函数或迭代器接口的东西。 空间配置器：负责空间的配置与管理，实现动态空间配置、空间管理、空间释放  ​ 六大组件之间的关系，容器通过空间配置器获得数据存储空间，算法通过迭代器存储容器中的内容，仿函 数可以协助算法完成不同的策略的变化，适配器可以修饰仿函数。
-STL中容器、算法、迭代器 ​	容器：将运用最广泛的一些数据结构实现出来，常见的数据结构有array、list、tree、stack、queue、set、map，根据数据在容器中的排列顺序，可以分成序列式容器和关联式容器。 序列式容器：强调值的排序，容器中每个元素有固定的位置 关联式容器：二叉树结构，元素间没有严格的物理上的顺序关系
-​	算法：解决问题的方法，以有限的步骤，解决逻辑或数学上的问题。 质变算法：运算过程中会更改区间内的元素的内容。如拷贝、替换 非质变算法：运算过程中不会更改区间内的元素的内容。如查找、遍历
-​	迭代器：容器和算法之间粘合剂。算法要通过迭代器才能访问容器中的元素，STL的中心思想在于将容器(container)和算法(algorithms)分开，彼此独立设计，最后再一贴胶着剂将他们撮合在一起。每个容器都有自己专属的迭代器 ，有点类似于指针。迭代器的种类如下：
-简单示例 #include&lt;iostream&gt;#include&lt;vector&gt;#include&lt;algorithm&gt;using namespace std; //迭代器示例 存放基础数据类型 void Print(int tmp) { cout &lt;&lt; tmp &lt;&lt; endl; } void test01() { //创建一个vector容器 vector&lt;int&gt; v; //向vector容器插入数据 v.push_back(2); v.push_back(4); v.push_back(6); v.push_back(8); //起始迭代器，返回容器中的第一个元素 vector&lt;int&gt;::iterator Vstart = v.begin(); //结束迭代器，返回容器中的最后一个元素的下一个位置 vector&lt;int&gt;::iterator Vend = v.
+                  初始STL，介绍了STL的诞生以及基本概率，STL（Standard Template Library 标准模板库）从广义上可以分成容器（container）、算法（algorithm）、迭代器（iterator）。容器和算法之间通过迭代器进行无缝连接
                 </div>
 
                 <p class="mb-0 f6 text-gray">
@@ -529,12 +513,7 @@ STL中容器、算法、迭代器 ​	容器：将运用最广泛的一些数据
 
 
                 <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
-                  Linux下搭建hugo博客 0.Hugo简介 ​	Hugo是由Go语言实现的静态网站生成器。简单、易用、高效、易扩展、快速部署。
-​	本博客主要参考了B站UP主CodeSheep的视频：https://www.bilibili.com/video/BV1q4411i7gL
-1.安装hugo ​	使用命令sudo apt-get install直接下载安装hugo，或者下载二进制.deb安装程序。 ​	下载后使用命令sudo dpkg -i hugo_0.80.0_Linux-64bit.deb 完成安装 ​	安装后查看hugo版本进行验证：
-jzhou@jzhou-virtual-machine:~/桌面$ hugo version Hugo Static Site Generator v0.80.0-792EF0F4 linux/amd64 BuildDate: 2020-12-31T13:37:58Z 2.用hugo生成博客 ​	终端输入命令，在jzhou_blog文件夹中生成一个hugo站点
-jzhou@jzhou-virtual-machine:~/桌面$ hugo new site jzhou_blog ​	得到如下输出后，创建成功
-Congratulations! Your new Hugo site is created in /home/jzhou/桌面/jzhou_blog. Just a few more steps and you&#39;re ready to go: 1. Download a theme into the same-named folder. Choose a theme from https://themes.
+                  本文主要介绍了在Linux环境下搭建自己的Hugo博客，使得能在本地启动博客，并部署到远端服务器
                 </div>
 
                 <p class="mb-0 f6 text-gray">
